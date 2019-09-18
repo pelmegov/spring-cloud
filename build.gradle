@@ -1,0 +1,58 @@
+buildscript {
+    repositories {
+        mavenLocal()
+        maven { url 'http://maven.aliyun.com/nexus/content/groups/public/' }
+        maven { url 'http://maven.aliyun.com/nexus/content/repositories/jcenter' }
+        mavenCentral()
+        jcenter()
+        maven { url 'http://repo.spring.io/plugins-release' }
+        maven { url "https://plugins.gradle.org/m2/" }
+    }
+    ext {
+        springBootVersion = '2.1.8.RELEASE'
+        springCloudVersion = 'Finchley.RELEASE'
+    }
+    dependencies {
+        classpath "io.spring.gradle:dependency-management-plugin:0.6.1.RELEASE"
+        classpath "org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}"
+    }
+}
+
+task wrapper(type: Wrapper) {
+    gradleVersion = '5.6.2'
+}
+
+subprojects {
+    apply plugin: 'java'
+    apply plugin: 'idea'
+    apply plugin: 'org.springframework.boot'
+    apply plugin: "io.spring.dependency-management"
+
+    compileJava {
+        sourceCompatibility = JavaVersion.VERSION_11
+        targetCompatibility = JavaVersion.VERSION_11
+        options.encoding = 'UTF-8'
+    }
+
+    repositories {
+        mavenLocal()
+        maven { url 'http://maven.aliyun.com/nexus/content/groups/public/' }
+        maven { url 'http://maven.aliyun.com/nexus/content/repositories/jcenter' }
+        mavenCentral()
+        jcenter()
+        maven { url 'http://repo.spring.io/plugins-release' }
+        maven { url "https://plugins.gradle.org/m2/" }
+    }
+
+    buildscript {
+        repositories {
+            mavenLocal()
+            maven { url 'http://maven.aliyun.com/nexus/content/groups/public/' }
+            maven { url 'http://maven.aliyun.com/nexus/content/repositories/jcenter' }
+            mavenCentral()
+            jcenter()
+            maven { url 'http://repo.spring.io/plugins-release' }
+            maven { url "https://plugins.gradle.org/m2/" }
+        }
+    }
+}
